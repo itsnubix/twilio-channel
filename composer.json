@@ -1,0 +1,39 @@
+{
+    "name": "itsnubix/twilio-channel",
+    "description": "Twilio Notification Channel for Laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ron Yu",
+            "email": "ryu@nubix.ca"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.1.3",
+        "illuminate/notifications": "~5.8.0|^6.0|^7.0",
+        "twilio/sdk": "^6.7"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^7.0|^8.0"
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Nubix\\Notifications\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nubix\\Tests\\Notifications\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nubix\\Notifications\\TwilioWhatsAppChannelServiceProvider"
+            ]
+        }
+    }
+}
