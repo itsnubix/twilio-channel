@@ -25,7 +25,7 @@ class ChannelTest extends TestCase
 
 
         $twilioClient->shouldReceive('createMessage')
-            ->with( $notifiable->phone_number, $notification->message . 'a');
+            ->with( $notifiable->phone_number, $notification->message);
 
         $channel->send($notifiable, $notification);
 
@@ -43,7 +43,7 @@ class TestNotification extends Notification
 {
     public $message = 'test message';
 
-    public function toMessage()
+    public function toTwilioWhatsAppMessage()
     {
         return new TwilioWhatsAppMessage($this->message);
     }

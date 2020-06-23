@@ -11,6 +11,11 @@ class TwilioWhatsAppChannel
 {
 
     /**
+     * @var string
+     */
+    public static $NOTIFICATION_KEY = 'twilio-whats-app';
+
+    /**
      * The Twilio Rest Client
      *
      * @var Nubix\Notifications\Models\TwilioWhatsAppClient
@@ -32,11 +37,11 @@ class TwilioWhatsAppChannel
      */
     public function send($notifiable, Notification $notification)
     {
-        if (!$to = $notifiable->routeNotificationFor('twilio:whatsApp', $notification)) {
+        if (!$to = $notifiable->routeNotificationFor(static::$NOTIFICATION_KEY, $notification)) {
             return;
         }
 
-        $message = $notification->toMessage($notifiable);
+        $message = $notification->toTwilioWhatsAppMessage($notifiable);
 
         if (is_string($message)) {
             $message = new TwilioWhatsAppMessage($message);

@@ -16,7 +16,7 @@ class TwilioWhatsAppChannelServiceProvider extends ServiceProvider
     public function register()
     {
         Notification::resolved(function (ChannelManager $service) {
-            $service->extend('twilio:whatsApp', function ($app) {
+            $service->extend(TwilioWhatsAppChannel::$NOTIFICATION_KEY, function ($app) {
 
                 return new TwilioWhatsAppChannel(
                     new TwilioWhatsAppClient(
